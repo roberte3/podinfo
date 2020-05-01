@@ -1,5 +1,8 @@
 # Default values for podinfo.
-
+secrets: 
+  {{.Secrets.secret }}
+  {{.Secrets.backwards}}
+  
 replicaCount: 1
 logLevel: info
 backend: #http://backend-podinfo:9898/echo

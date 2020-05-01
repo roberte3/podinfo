@@ -88,6 +88,7 @@ func NewServer(config *Config, logger *zap.Logger) (*Server, error) {
 }
 
 func (s *Server) registerHandlers() {
+	s.router.HandleFunc("/sops", s.fetchSops).Methods("GET")
 	s.router.Handle("/metrics", promhttp.Handler())
 	s.router.PathPrefix("/debug/pprof/").Handler(http.DefaultServeMux)
 	s.router.HandleFunc("/", s.indexHandler).HeadersRegexp("User-Agent", "^Mozilla.*").Methods("GET")
